@@ -14,3 +14,6 @@ Here are the structure of the folder:
 1. Clone the repository
 2. Create a virtual environment and activate it
 3. Install the requirements using `pip install -r requirements.txt`
+4. Run the app using `python app.py`
+5. Open the browser and navigate to `http://127.0.0.1:5000/`
+6. You have to create client and service before you can create an invoice.
