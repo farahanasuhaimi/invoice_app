@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block heading
+%}Welcome to Invoice App{% endblock %} {% block content %}
+<div class="container">
+  <nav class="navigation">
+    <a href="{{ url_for('create_invoice') }}" class="btn">Create Invoice</a>
+    <a href="{{ url_for('insert_service') }}" class="btn">Create Services</a>
+    <a href="{{ url_for('insert_client') }}" class="btn">Create Clients</a>
+  </nav>
+</div>
+{% endblock %}

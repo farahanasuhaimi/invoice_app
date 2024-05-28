@@ -1,0 +1,203 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+a.btn:hover {
+    background-color: #0056b3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label, form select, form input {
+    margin: 5px 0;
+}
+
+button {
+    width: 100px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.service-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.service-form label {
+    margin-bottom: 5px;
+}
+
+.service-form input {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.service-form button {
+    width: 150px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+
+.service-form button:hover {
+    background-color: #0056b3;
+}
+
+a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin: 20px auto;
+}
+
+a.btn:hover {
+    background-color: #0056b3;
+}
+
+a.return-home {
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.invoice-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+.invoice-details {
+    text-align: right;
+}
+
+.invoice-details h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.invoice-details p {
+    margin: 5px 0;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.invoice-table th,
+.invoice-table td {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: left;
+}
+
+.invoice-table th {
+    background-color: #f1f1f1;
+}
+
+.invoice-table tfoot td {
+    font-weight: bold;
+}
+
+.invoice-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.invoice-footer p {
+    margin: 5px 0;
+}
+
+@media print {
+    .invoice-actions {
+        display: none;
+    }
+
+    .invoice-container {
+        box-shadow: none;
+        margin: 10% auto;
+        width: 100%;
+    }
+    .container {
+        box-shadow: none;
+    }
+
+    a.return-home {
+        display: none;
+    }
+}

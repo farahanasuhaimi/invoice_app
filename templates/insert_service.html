@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Create Service{% endblock %}{% block
+content %}
+<div class="container">
+  <h1>Create a New Service</h1>
+  <form method="POST" class="service-form">
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description" required />
+
+    <label for="cost">Cost:</label>
+    <input type="number" name="cost" id="cost" step="0.01" required />
+
+    <button type="submit" class="btn">Create Service</button>
+  </form>
+  <a href="{{ url_for('index') }}" class="return-home">Return to Home</a>
+</div>
+{% endblock %}

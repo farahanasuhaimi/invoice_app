@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Create Invoice{% endblock %} {% block
+content %}
+<div class="container">
+  <h1>Create a New Invoice</h1>
+  <form method="POST" class="service-form">
+    <label for="client">Select Client:</label>
+    <select name="client" id="client">
+      {% for client in clients %}
+      <option value="{{ client.id }}">{{ client.name }}</option>
+      {% endfor %}</select
+    ><br />
+
+    <label>Services:</label>
+    <div id="services">
+      {% for service in services %}
+      <div>
+        <input type="checkbox" name="service" value="{{ service.id }}" /> {{
+        service.description }} ({{ service.cost }})<br />
+        <label>Quantity:</label>
+        <input type="number" name="quantity" min="1" value="1" />
+      </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit" class="btn">Create Invoice</button>
+  </form>
+  <a href="{{ url_for('index') }}" class="btn return-home">Return to Home</a>
+</div>
+{% endblock %}
