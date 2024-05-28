@@ -3,3 +3,7 @@
 # Other files/directories...
 
 .env
+
+
+# SQLite database
+instance/*.db

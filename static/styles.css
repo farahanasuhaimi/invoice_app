@@ -19,10 +19,28 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
 .navigation {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     margin-bottom: 20px;
+}
+
+a.btn-invoice {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9ac7f7;
+    color: #131212;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin: 20px auto;
 }
 
 a.btn {
@@ -35,6 +53,8 @@ a.btn {
     border-radius: 4px;
     transition: background-color 0.3s;
 }
+
+
 
 a.btn:hover {
     background-color: #0056b3;
@@ -81,6 +101,12 @@ button:hover {
     border-radius: 4px;
 }
 
+.service-form select, option {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
 .service-form button {
     width: 150px;
     padding: 10px;
@@ -116,7 +142,9 @@ a.btn:hover {
 a.return-home {
     display: block;
     width: fit-content;
+    background-color: #303841;
     margin-top: 20px;
+    font-size: 0.8em;
 }
 
 .invoice-container {

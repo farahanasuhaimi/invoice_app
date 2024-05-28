@@ -5,20 +5,23 @@
       <img src="images/logo1.jpg" alt="Company Logo" />
     </div>
     <div class="invoice-details">
-      <h1>Invoice #{{ invoice.invoice_number }}</h1>
+      <h3>Invoice #{{ invoice.invoice_number }}</h3>
       <p>Date: {{ invoice.date.strftime('%B %d, %Y') }}</p>
-      <p>Client: {{ invoice.client.name }}</p>
     </div>
   </div>
+  <div class="client-details">
+    <h3>Kepada :</h3>
+    <p>Nama : {{ invoice.client.name }}</p>
+    <p>Alamat : {{ invoice.client.address }}</p>
+  </div>
 
-  <h3>Services:</h3>
   <table class="invoice-table">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Description</th>
+        <th>No.</th>
+        <th>Item</th>
         <th>Quantity</th>
-        <th>Price Each</th>
+        <th>Price</th>
         <th>Total</th>
       </tr>
     </thead>
