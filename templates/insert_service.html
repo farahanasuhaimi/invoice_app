@@ -3,13 +3,23 @@ content %}
 <div class="container">
   <h2>Create a New Service</h2>
   <form method="POST" class="service-form">
-    <label for="description">Description:</label>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <label for="description">Description :</label>
     <input type="text" name="description" id="description" required />
 
-    <label for="cost">Cost:</label>
+    <label for="cost">Cost :</label>
     <input type="number" name="cost" id="cost" step="0.01" required />
 
-    <button type="submit" class="btn">Create Service</button>
+    <label for="type">Type :</label>
+    <input
+      type="text"
+      name="type"
+      id="type"
+      placeholder="Service, Product, Addon etc."
+      required
+    />
+
+    <button type="submit" class="btn">Create Service / Product</button>
   </form>
   <a href="{{ url_for('index') }}" class="btn return-home">Return to Home</a>
 </div>

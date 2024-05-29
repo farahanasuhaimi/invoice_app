@@ -17,3 +17,11 @@ Here are the structure of the folder:
 4. Run the app using `python app.py`
 5. Open the browser and navigate to `http://127.0.0.1:5000/`
 6. You have to create client and service before you can create an invoice.
+
+Few interfaces of the app:
+1. How to create service for the invoice:
+   
+    ![image](images/create_service_interface.png)
+
+1. How to create invoice:
+    ![image](images/create_invoice_interface.png)

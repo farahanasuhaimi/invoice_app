@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from xhtml2pdf import pisa
 # import os
+from flask_wtf import CSRFProtect
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///invoice_app.db'
@@ -10,6 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///invoice_app.db'
 app.config['SECRET_KEY'] = 'my_local_secret_key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+csrf = CSRFProtect(app)
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -22,6 +24,7 @@ class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(200), nullable=False)
     cost = db.Column(db.Numeric(10,2), nullable=False)
+    type = db.Column(db.String(100), nullable=False)
 
 class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -92,11 +95,19 @@ def insert_service():
     if request.method == 'POST':
         description = request.form['description']
         cost = request.form['cost']
-        service = Service(description=description, cost=cost)
+        type = request.form['type']
+        service = Service(description=description, cost=cost, type=type)
         db.session.add(service)
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('insert_service.html')  
+
+@app.route('/delete_service/<int:id>', methods=['POST'])
+def delete_service(id):
+    service = Service.query.get_or_404(id)
+    db.session.delete(service)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 @app.route('/insert_client', methods=['GET', 'POST'])
 def insert_client():

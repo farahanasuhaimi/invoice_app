@@ -3,6 +3,7 @@ content %}
 <div class="container">
   <h1>Create a New Invoice</h1>
   <form method="POST" class="service-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <label for="client">Select Client:</label>
     <select name="client" id="client">
       {% for client in clients %}
@@ -11,13 +12,17 @@ content %}
     ><br />
 
     <label>Services:</label>
-    <div id="services">
+    <div id="services" class="service-list">
       {% for service in services %}
-      <div>
-        <input type="checkbox" name="service" value="{{ service.id }}" /> {{
-        service.description }} ({{ service.cost }})<br />
-        <label>Quantity:</label>
-        <input type="number" name="quantity" min="1" value="1" />
+      <div class="service-item">
+        <div class="service-details">
+          <input type="checkbox" name="service" value="{{ service.id }}" /> {{
+          service.description }} (RM {{ service.cost }})<br />
+        </div>
+        <div class="quantity-input">
+          <label>Quantity:</label>
+          <input type="number" name="quantity" min="1" value="1" />
+        </div>
       </div>
       {% endfor %}
     </div>
