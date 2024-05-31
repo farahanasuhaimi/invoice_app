@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Invoice App{% endblock %}</title>
+    <title class="print-hide">{% block title %}Invoice App{% endblock %}</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>{% block heading %}Invoice App{% endblock %}</h1>
+      <h1 class="print-hide">{% block heading %}Invoice App{% endblock %}</h1>
       {% block content %}{% endblock %}
     </div>
   </body>

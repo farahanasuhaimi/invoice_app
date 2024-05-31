@@ -2,7 +2,10 @@
 <div class="invoice-container">
   <div class="invoice-header">
     <div class="logo">
-      <img src="images/logo1.jpg" alt="Company Logo" />
+      <img
+        src="{{ url_for('static', filename='images/logo.png') }}"
+        alt="Company Logo"
+      />
     </div>
     <div class="invoice-details">
       <h3>Invoice #{{ invoice.invoice_number }}</h3>
@@ -20,8 +23,9 @@
       <tr>
         <th>No.</th>
         <th>Item</th>
-        <th>Quantity</th>
+        <th>Qty</th>
         <th>Price</th>
+        <th>Discount</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -32,13 +36,14 @@
         <td>{{ item.service.description }}</td>
         <td>{{ item.quantity }}</td>
         <td>RM {{ item.service.cost|round(2) }}</td>
-        <td>RM {{ "%.2f"|format(item.cost) }}</td>
+        <td>{{ item.discount }}%</td>
+        <td>RM {{ "%.2f"|format(item.cost * (1 - item.discount / 100)) }}</td>
       </tr>
       {% endfor %}
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4">Total</td>
+        <td colspan="5">Total</td>
         <td>RM {{ "%.2f"|format(invoice.total)}}</td>
       </tr>
     </tfoot>

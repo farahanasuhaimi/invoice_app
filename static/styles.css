@@ -95,13 +95,7 @@ button:hover {
     margin-bottom: 5px;
 }
 
-.service-form input {
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-}
-
-.service-form select, option {
+.service-form input, select {
     padding: 8px;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -248,6 +242,11 @@ a.return-home {
 }
 
 @media print {
+
+    .print-hide {
+        display: none;
+    }
+    
     .invoice-actions {
         display: none;
     }
@@ -264,4 +263,10 @@ a.return-home {
     a.return-home {
         display: none;
     }
+
+    @page {
+        size: landscape;
+    }
+
+
 }

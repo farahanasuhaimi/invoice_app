@@ -4,12 +4,14 @@ from datetime import datetime
 from xhtml2pdf import pisa
 # import os
 from flask_wtf import CSRFProtect
+from decimal import Decimal
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///invoice_app.db'
 # app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default_secret_key')
 app.config['SECRET_KEY'] = 'my_local_secret_key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 csrf = CSRFProtect(app)
 
@@ -40,6 +42,7 @@ class InvoiceItem(db.Model):
     service_id = db.Column(db.Integer, db.ForeignKey('service.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     cost = db.Column(db.Float, nullable=False)
+    discount = db.Column(db.Integer, nullable=False, default=0)
     invoice = db.relationship('Invoice', backref=db.backref('items', lazy=True))
     service = db.relationship('Service', backref=db.backref('items', lazy=True))
 
@@ -53,7 +56,8 @@ def create_invoice():
         client_id = request.form['client']
         services = request.form.getlist('service')
         quantities = request.form.getlist('quantity')
-        
+        discounts = request.form.getlist('discount')
+
         current_date = datetime.now()
         year_month = current_date.strftime("%Y%m")
 
@@ -72,12 +76,14 @@ def create_invoice():
         db.session.commit()
 
         total_cost = 0
-        for service_id, quantity in zip(services, quantities):
+        for service_id, quantity, discount in zip(services, quantities, discounts):
             service = Service.query.get(service_id)
             cost = service.cost * int(quantity)
-            total_cost += cost
+            discounted_cost = cost * (1- (Decimal(discount) / 100))
 
-            invoice_item = InvoiceItem(invoice_id=invoice.id, service_id=service_id, quantity=quantity, cost=cost)
+            total_cost += discounted_cost
+
+            invoice_item = InvoiceItem(invoice_id=invoice.id, service_id=service_id, quantity=quantity, cost=cost, discount=discount)
             db.session.add(invoice_item)
         
         invoice.total = total_cost
