@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Create Invoice{% endblock %} {% block
 content %}
-<div class="container">
+<div class="invoice-container">
   <h1>Create a New Invoice</h1>
   <form method="POST" class="service-form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
@@ -11,7 +11,7 @@ content %}
       {% endfor %}</select
     ><br />
 
-    <label>Services:</label>
+    <label>Product and Services:</label>
     <div id="services" class="service-list">
       {% for service in services %}
       <div class="service-item">

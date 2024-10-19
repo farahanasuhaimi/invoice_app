@@ -119,29 +119,29 @@ button:hover {
 
 .service-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+            gap: 10px;
   }
   
 .service-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 68%;
+    gap: 20px;
 }
 
+.service-details {
+    flex: 2;
+}
 
 .service-details label {
   margin-left: 10px;
 }
 
 .quantity-input {
-  display: flex;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .quantity-input label {
@@ -183,7 +183,6 @@ a.return-home {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .invoice-header {
